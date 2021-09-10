@@ -1,7 +1,7 @@
-import { Grid, Paper, makeStyles, TextField } from "@material-ui/core";
+import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
 import logo from "./Resources/olemisslogo2.png";
-import { ExitToApp, PlayCircleFilledWhite, SignalWifi1BarLock } from "@material-ui/icons";
+import { ExitToApp } from "@material-ui/icons";
 import './App.css';
 
 const useStyles = makeStyles({
@@ -58,9 +58,10 @@ function Landing() {
                 <Paper className={classes.mainPaper}>
                   <div className="mainPaper-override">
                     <img src={logo} style={{height: "300px"}} alt="Ole Miss Logo"></img>
-                    <form noValidate autoComplete="off"><Grid container direction="column" spacing={5}>
+                    <form noValidate autoComplete="off"><Grid container direction="column" spacing={3}>
                       <Grid item><TextField label="WebID"/></Grid>
                       <Grid item><TextField label="Password"/></Grid>
+                      <Grid item><Button variant="contained" color="primary">Log in</Button></Grid>
                     </Grid></form>
                   </div>                  
                 </Paper>
