@@ -1,10 +1,20 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Paper, makeStyles, TextField } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
-import { ExitToApp } from "@material-ui/icons";
+import logo from "./Resources/olemisslogo2.png";
+import { ExitToApp, PlayCircleFilledWhite, SignalWifi1BarLock } from "@material-ui/icons";
 import './App.css';
 
-function App() {
+const useStyles = makeStyles({
+  mainPaper: {
+    color: "white",
+    backgroundColor: "rgba(255,255,255, 0.8)",
+    borderRadius: "20px",
+    padding: "20px"
+  }, // a style rule
+});
 
+function Landing() {
+  const classes = useStyles();
   if (isMobile){
     return (
       <div className="App">
@@ -42,7 +52,20 @@ function App() {
           </Grid>
         </header>
         <div className="appBody">
-          
+          <Grid container
+            justifyContent="center">
+              <Grid item xs={4}>
+                <Paper className={classes.mainPaper}>
+                  <div className="mainPaper-override">
+                    <img src={logo} style={{height: "300px"}} alt="Ole Miss Logo"></img>
+                    <form noValidate autoComplete="off"><Grid container direction="column" spacing={5}>
+                      <Grid item><TextField label="WebID"/></Grid>
+                      <Grid item><TextField label="Password"/></Grid>
+                    </Grid></form>
+                  </div>                  
+                </Paper>
+              </Grid>
+          </Grid>
         </div>
       </div>
     );
@@ -51,4 +74,4 @@ function App() {
 
 }
 
-export default App;
+export default Landing;

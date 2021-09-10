@@ -27,3 +27,6 @@ body {
   font-weight: bold;
   vertical-align: middle;
 }
+ .mainPaper-override {
+   opacity: 1.0;
+ }
