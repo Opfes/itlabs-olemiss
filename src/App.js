@@ -1,6 +1,6 @@
-import logo from './Resources/olemisslogo2.png';
+import { Grid } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
-import {Paper , Grid} from "@material-ui/core";
+import { ExitToApp } from "@material-ui/icons";
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {/*<img src={logo} className="App-logo" alt="logo" /> */}
           <p>You're on mobile!</p>
           <a
             className="App-link"
@@ -24,27 +24,27 @@ function App() {
     );
   } else {
     return (
-      <body>
-        <header className="itlabs-header">
-          <h1 style={{padding: "15px"}}>IT Labs</h1>
-          <img src={logo} style={{height: "100px", display: "block", margin:"-5px", alignSelf:"center"}} alt="logo" />
-          <h1 style={{padding: "15px", float:"right"}}>Welcome, User</h1>
-        </header>
-        <header className="App-header"><Grid container
-        direction="column"
-        >
-        <Grid item>
+      <div className="App">
+        <header>
           <Grid container
-          direction="column"
-          justifyContent="space-evenly"
-          alignItems="center">
-            <Grid item><img src={logo} className="App-logo" alt="logo" /></Grid>
-            <Grid item><p>IT Labs, from the ground up.</p></Grid>
-          </Grid></Grid>
-        </Grid></header>
-      </body>
-      
-      
+          justifyContent='space-between'
+          alignItems="center"
+          wrap="nowrap"
+          >
+            <Grid item xs={6}><p className="headerText">UM IT Labs</p></Grid>
+            <Grid item xs={6} container
+              alignItems="center"
+              justifyContent="flex-end"
+              style={{paddingRight:15}}>
+              <Grid item><p className="headerText">Hi, User</p></Grid>
+              <Grid item><ExitToApp fontSize="large" /></Grid>
+            </Grid>
+          </Grid>
+        </header>
+        <div className="appBody">
+          
+        </div>
+      </div>
     );
   }
 
