@@ -2,6 +2,7 @@ import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
 import logo from "./Resources/olemisslogo2.png";
 import { ExitToApp } from "@material-ui/icons";
+import {Link} from "react-router-dom";
 import './App.css';
 
 const useStyles = makeStyles({
@@ -61,7 +62,7 @@ function Landing() {
                     <form noValidate autoComplete="off"><Grid container direction="column" spacing={3}>
                       <Grid item><TextField label="WebID"/></Grid>
                       <Grid item><TextField label="Password"/></Grid>
-                      <Grid item><Button variant="contained" color="primary">Log in</Button></Grid>
+                      <Grid item><Link to="/dashboard"><Button variant="contained" color="primary">Log in</Button></Link></Grid>
                     </Grid></form>
                   </div>                  
                 </Paper>

@@ -1,7 +1,8 @@
-import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
+import { Grid, Paper, makeStyles, TextField, Button, Icon } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
 import logo from "./Resources/olemisslogo2.png";
 import { ExitToApp } from "@material-ui/icons";
+import {Link} from "react-router-dom";
 import './App.css';
 
 const useStyles = makeStyles({
@@ -33,6 +34,7 @@ const useStyles = makeStyles({
       } else {
         return (
             <div className="App">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
               <header>
                 <Grid container
                 justifyContent='space-between'
@@ -45,16 +47,38 @@ const useStyles = makeStyles({
                     justifyContent="flex-end"
                     style={{paddingRight:15}}>
                     <Grid item><p className="headerText">Hi, User</p></Grid>
-                    <Grid item><ExitToApp fontSize="large" /></Grid>
+                    <Grid item><Link style={{ textDecoration: 'none', color:'black' }} to="/"><ExitToApp fontSize="large" /></Link></Grid>
                   </Grid>
                 </Grid>
               </header>
               <div className="appBody">
                 <Grid container
-                  justifyContent="center">
-                    <Grid item xs={4}>
+                  justifyContent="center"
+                  justify="space-around"
+                  spacing={2}
+                  >
+                    <Grid item id='CTCard' xs={4}>
                       <Paper className={classes.mainPaper}>
-                        <h1>Dashboard</h1>                 
+                        <h1>Classroom<br/>Technology</h1>
+                        <Button variant="contained" color="primary">Expand</Button>              
+                      </Paper>
+                    </Grid>
+                    <Grid item id='HDCard' xs={4}>
+                      <Paper className={classes.mainPaper}>
+                        <h1>Helpdesk</h1>
+                        <Button variant="contained" color="primary">Expand</Button>        
+                      </Paper>
+                    </Grid>
+                    <Grid item id='DLCard' xs={4}>
+                      <Paper className={classes.mainPaper}>
+                        <h1>Distance<br/>Learning</h1>
+                        <Button variant="contained" color="primary">Expand</Button>                
+                      </Paper>
+                    </Grid>
+                    <Grid item id='FTDCCard' xs={4}>
+                      <Paper className={classes.mainPaper}>
+                        <h1>FTDC</h1> 
+                        <Button variant="contained" color="primary">Expand</Button>                
                       </Paper>
                     </Grid>
                 </Grid>
