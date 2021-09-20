@@ -26,6 +26,7 @@ function DigitalSignageSchedule() {
   const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+    password: 'Ju57tru5tm3##',
     database: 'umcttest'
   });
 
