@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
 import logo from "./Resources/olemisslogo2.png";
@@ -16,14 +17,31 @@ const useStyles = makeStyles({
 
 function DigitalSignageSchedule() {
   const classes = useStyles();
-
+  const mysql = require('mysql2');
+  const [workers,setWorkers] = useState();
+  const [nextworkers, setNextworkers] = useState();
   const dayObject = new Date();
+  var shift = 1;
+
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'umcttest'
+  });
 
   function refreshContent() {
-    var minute = new Date().getMinutes(),
-    nextRefresh = (30 - (minute % 30)) * 60 * 1000;
-    setTimeout( function() { window.location.reload(); }, nextRefresh );
-    console.log("refresh successful")
+    if (dayObject.getMinutes() < 30) {
+      shift = 1;
+    } else {
+      shift = 2;
+    }
+    connection.execute(
+      'SELECT `Names` FROM `schedule` WHERE `Day` = ? AND `Hour` = ? AND `Shift` = ?',
+      [dayObject.getDay(), dayObject.getHours(), shift],
+      function(err, results) {
+        setWorkers(results);
+      }
+    );
   }
 
   refreshContent();
@@ -71,7 +89,7 @@ function DigitalSignageSchedule() {
                         <Paper className={classes.mainPaper}>
                             <div className="mainPaper-override">
                                 <Grid item><h1>UMCT Schedule</h1></Grid>
-                                <Grid item><h2>Currently On:</h2></Grid>
+                                <Grid item><h2>Currently On:<br />{workers}</h2></Grid>
                                 <Grid item><h2>Next Shift:</h2></Grid>
                                 <Grid item><Link to="/dashboard"><Button variant="contained" color="primary">Return</Button></Link></Grid>
                             </div>                  
