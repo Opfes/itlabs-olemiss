@@ -30,6 +30,8 @@ function DigitalSignageSchedule() {
     database: 'umcttest'
   });
 
+  connection.connect();
+
   function refreshContent() {
     if (dayObject.getMinutes() < 30) {
       shift = 1;
