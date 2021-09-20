@@ -1,7 +1,4 @@
-import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
-import {isMobile} from "react-device-detect";
-import logo from "./Resources/olemisslogo2.png";
-import { ExitToApp } from "@material-ui/icons";
+import {makeStyles} from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +8,7 @@ import {
 import Landing from "./Landing.js";
 import Dashboard from "./Dashboard.js";
 import './App.css';
+import DigitalSignageSchedule from "./DigitalSignageSchedule.js";
 
 const useStyles = makeStyles({
   mainPaper: {
@@ -32,6 +30,9 @@ function App() {
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/signageschedule">
+          <DigitalSignageSchedule />
         </Route>
       </Switch>
     </Router>

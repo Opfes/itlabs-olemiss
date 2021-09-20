@@ -29,6 +29,7 @@ body {
 }
  .mainPaper-override {
    opacity: 1.0;
+   color: black;
  }
 
  .appBody {
