@@ -1,3 +1,6 @@
+
+import {makeStyles} from "@material-ui/core";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,6 +9,7 @@ import {
 import Landing from "./Landing.js";
 import Dashboard from "./Dashboard.js";
 import './App.css';
+import DigitalSignageSchedule from "./DigitalSignageSchedule.js";
 
 function App() {  
   return (
@@ -16,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/signageschedule">
+          <DigitalSignageSchedule />
         </Route>
       </Switch>
     </Router>

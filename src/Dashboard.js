@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     mainPaper: {
       color: "black",
       backgroundColor: "rgba(255,255,255, 0.8)",
-      borderRadius: "20px",
+      //borderRadius: "20px",
       padding: "20px"
     }, // a style rule
   });
@@ -59,14 +59,17 @@ const useStyles = makeStyles({
                   >
                     <Grid item id='CTCard' xs={4}>
                       <Paper className={classes.mainPaper}>
-                        <h1>Classroom<br/>Technology</h1>
-                        <Button variant="contained" color="primary">Expand</Button>              
+                          <Grid container direction="column" spacing={1}>
+                            <Grid item><h1>Classroom<br/>Technology</h1></Grid>
+                            <Grid item><Button variant="contained" color="primary"><Link style={{ textDecoration: 'none', color: "white" }} to="/signageschedule">Schedule</Link></Button></Grid>
+                            <Grid item><Button variant="contained" color="primary">Expand</Button></Grid>
+                        </Grid>
                       </Paper>
                     </Grid>
                     <Grid item id='HDCard' xs={4}>
                       <Paper className={classes.mainPaper}>
                         <h1>Helpdesk</h1>
-                        <Button variant="contained" color="primary">Expand</Button>        
+                        <Grid item><Button variant="contained" color="primary">Expand</Button></Grid>        
                       </Paper>
                     </Grid>
                     <Grid item id='DLCard' xs={4}>
