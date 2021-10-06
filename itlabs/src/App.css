@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  overflow: "hidden";
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url(./Resources/desktop-app-background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.headerText {
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  vertical-align: middle;
+}
+ .mainPaper-override {
+   opacity: 1.0;
+   color: black;
+ }
+
+ .appBody {
+  padding: 10px;
+  
+ }

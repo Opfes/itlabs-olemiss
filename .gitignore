@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/itlabs/node_modules
 
 # testing
 /coverage
