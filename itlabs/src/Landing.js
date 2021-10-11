@@ -62,7 +62,7 @@ function Landing() {
                     <form noValidate autoComplete="off"><Grid container direction="column" spacing={3}>
                       <Grid item><TextField label="WebID"/></Grid>
                       <Grid item><TextField label="Password"/></Grid>
-                      <Grid item><Link to="/dashboard"><Button variant="contained" color="primary">Log in</Button></Link></Grid>
+                      <Grid item><Link to="/dashboard" style={{ textDecoration: 'none' }}><Button variant="contained" color="primary">Log in</Button></Link></Grid>
                     </Grid></form>
                   </div>                  
                 </Paper>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Paper, makeStyles, TextField, Button } from "@material-ui/core";
+import { Grid, Paper, makeStyles,  Button } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
 import axios from 'axios';
-import { ExitToApp, SettingsCellOutlined } from "@material-ui/icons";
+import { ExitToApp} from "@material-ui/icons";
 import {Link} from "react-router-dom";
 import './App.css';
 
@@ -17,22 +17,20 @@ const useStyles = makeStyles({
 
 function DigitalSignageSchedule() {
   const classes = useStyles();
-  const [nextworkers, setNextworkers] = useState();
+  const [nextSlot, setNextSlot] = useState({});
   const [slot, setSlot] = useState({});
 
   useEffect(() => {
     getSchedule();
 
     const interval = setInterval(() =>{
-      console.log("Refresh Check");
+      //console.log("Refresh Check");
       let today = new Date();
       
       if (today.getMinutes() == 0){
         window.location.reload();
       } else if (today.getMinutes() == 30){
         window.location.reload();
-      } else {
-        console.log(today.getMinutes() + " No need for refresh");
       }
     }, 60000);
   },[]);
@@ -40,21 +38,43 @@ function DigitalSignageSchedule() {
   function getSchedule() {
     var today = new Date();
     var thisShift = 0;
-    let tempObjectHolder = {};
+    let nextShift = 0;
     if (today.getMinutes() < 30){
         thisShift = 1;
     }else{
         thisShift = 2;
     }
     axios
-      .get('http://localhost:8082/api/slots/'+today.getDay()+'&'+today.getHours()+'&'+thisShift)
+      .get('http://130.74.129.58:8082/api/slots/'+today.getDay()+'&'+today.getHours()+'&'+thisShift)
       .then(res => {
-        //console.log("Print-showBookDetails-API-response: " + res.data[0]);
         setSlot(res.data[0]);
       })
       .catch(err => {
         console.log("Error from ShowSlotDetails");
       })
+    if (thisShift == 1) {
+      nextShift = 2;
+      axios
+      .get('http://130.74.129.58:8082/api/slots/'+today.getDay()+'&'+today.getHours()+'&'+nextShift)
+      .then(res => {
+        setNextSlot(res.data[0]);
+      })
+      .catch(err => {
+        console.log("Error from ShowSlotDetails");
+      })
+    } else if (thisShift == 2) {
+      nextShift = 1;
+      let nextHour = today.getHours() + 1;
+      console.log("Next Hour: " + nextHour);
+      axios
+      .get('http://130.74.129.58:8082/api/slots/'+today.getDay()+'&'+nextHour+'&'+nextShift)
+      .then(res => {
+        setNextSlot(res.data[0]);
+      })
+      .catch(err => {
+        console.log("Error from ShowSlotDetails");
+      })
+    }
   }
 
   if (isMobile){
@@ -101,8 +121,8 @@ function DigitalSignageSchedule() {
                             <div className="mainPaper-override">
                                 <Grid item><h1>UMCT Schedule</h1></Grid>
                                 <Grid item><h2>Currently On:</h2><p>{slot.Names}</p></Grid>
-                                <Grid item><h2>Next Shift:</h2></Grid>
-                                <Grid item><Link to="/dashboard"><Button variant="contained" color="primary">Return</Button></Link></Grid>
+                                <Grid item><h2>Next Shift:</h2><p>{nextSlot.Names}</p></Grid>
+                                <Grid item><Link to="/dashboard" style={{ textDecoration: 'none' }}><Button variant="contained" color="primary">Return</Button></Link></Grid>
                             </div>                  
                         </Paper>
                     </Grid>

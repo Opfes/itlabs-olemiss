@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, Paper, makeStyles, TextField, Button, Icon } from "@material-ui/core";
+import { Grid, Paper, makeStyles, Button } from "@material-ui/core";
 import {isMobile} from "react-device-detect";
-import logo from "./Resources/olemisslogo2.png";
+//import logo from "./Resources/olemisslogo2.png";
 import { ExitToApp } from "@material-ui/icons";
 import {Link} from "react-router-dom";
 import './App.css';
