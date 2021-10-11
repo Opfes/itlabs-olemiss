@@ -21,6 +21,23 @@ function DigitalSignageSchedule() {
   const [slot, setSlot] = useState({});
 
   useEffect(() => {
+    getSchedule();
+
+    const interval = setInterval(() =>{
+      console.log("Refresh Check");
+      let today = new Date();
+      
+      if (today.getMinutes() == 0){
+        window.location.reload();
+      } else if (today.getMinutes() == 30){
+        window.location.reload();
+      } else {
+        console.log(today.getMinutes() + " No need for refresh");
+      }
+    }, 60000);
+  },[]);
+
+  function getSchedule() {
     var today = new Date();
     var thisShift = 0;
     let tempObjectHolder = {};
@@ -38,7 +55,7 @@ function DigitalSignageSchedule() {
       .catch(err => {
         console.log("Error from ShowSlotDetails");
       })
-  },[]);
+  }
 
   if (isMobile){
     return (
