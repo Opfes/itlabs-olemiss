@@ -119,9 +119,9 @@ function DigitalSignageSchedule() {
                     <Grid item xs={9}>
                         <Paper className={classes.mainPaper}>
                             <div className="mainPaper-override">
-                                <Grid item><h1 style={{fontSize: 64}}><u>UMCT Schedule</u></h1></Grid>
-                                <Grid item><h2 style={{fontSize: 48}}>Currently On:</h2><p style={{fontSize: 32}}>{slot.Names}</p></Grid><br /><br />
-                                <Grid item><h2 style={{fontSize: 32}}>Next Shift:</h2><p style={{fontSize: 22}}>{nextSlot.Names}</p></Grid>
+                                <Grid item><h1 style={{fontSize: 60}}><u>UMCT Schedule</u></h1></Grid>
+                                <Grid item><h2 style={{fontSize: 44}}>Currently On:</h2><p style={{fontSize: 30}}>{slot.Names}</p></Grid><br /><br />
+                                <Grid item><h2 style={{fontSize: 30}}>Next Shift:</h2><p style={{fontSize: 20}}>{nextSlot.Names}</p></Grid>
                                 <Grid item><Link to="/dashboard" style={{ textDecoration: 'none' }}><Button variant="contained" color="primary">Return</Button></Link></Grid>
                             </div>                  
                         </Paper>
