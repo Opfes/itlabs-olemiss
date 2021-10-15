@@ -25,18 +25,24 @@ function DigitalSignageSchedule() {
     getSchedule();
 
     const interval = setInterval(() =>{
-      //console.log("Refresh Check");
       let today = new Date();
+      let hours;
       
-      if(today.getMinutes() == 0){
-        setClock(today.getHours() + ':' + "00");
+      //this next section formats the clock
+      if (today.getHours() > 12){
+        hours = today.getHours() - 12;
+      } else {hours = today.getHours;}
+
+      if(today.getMinutes() === 0){
+        setClock(hours + ':' + "00");
       } else if (today.getMinutes() < 10) {
-        setClock(today.getHours() + ':0' + today.getMinutes());
+        setClock(hours + ':0' + today.getMinutes());
       } else {
-        setClock(today.getHours() + ':' + today.getMinutes());
+        setClock(hours + ':' + today.getMinutes());
       }
       
-
+      //this calls the reload every thirty minutes
+      //I'd much prefer this to update the data instead of a full reload, but this works for now
       if (today.getMinutes() == 0){
         window.location.reload();
       } else if (today.getMinutes() == 30){
