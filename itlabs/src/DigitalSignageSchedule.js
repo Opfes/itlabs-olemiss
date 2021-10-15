@@ -27,7 +27,15 @@ function DigitalSignageSchedule() {
     const interval = setInterval(() =>{
       //console.log("Refresh Check");
       let today = new Date();
-      setClock(today.getHours() + ':' + today.getMinutes());
+      
+      if(today.getMinutes() == 0){
+        setClock(today.getHours() + ':' + "00");
+      } else if (today.getMinutes() < 10) {
+        setClock(today.getHours() + ':0' + today.getMinutes());
+      } else {
+        setClock(today.getHours() + ':' + today.getMinutes());
+      }
+      
 
       if (today.getMinutes() == 0){
         window.location.reload();
