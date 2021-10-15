@@ -19,6 +19,7 @@ function DigitalSignageSchedule() {
   const classes = useStyles();
   const [nextSlot, setNextSlot] = useState({});
   const [slot, setSlot] = useState({});
+  const [clock, setClock] = useState();
 
   useEffect(() => {
     getSchedule();
@@ -26,7 +27,8 @@ function DigitalSignageSchedule() {
     const interval = setInterval(() =>{
       //console.log("Refresh Check");
       let today = new Date();
-      
+      setClock(today.getHours() + ':' + today.getMinutes());
+
       if (today.getMinutes() == 0){
         window.location.reload();
       } else if (today.getMinutes() == 30){
@@ -103,8 +105,9 @@ function DigitalSignageSchedule() {
                 alignItems="center"
                 wrap="nowrap"
                 >
-                    <Grid item xs={6}><p className="headerText">UM IT Labs</p></Grid>
-                    <Grid item xs={6} container
+                    <Grid item xs={4}><p className="headerText">UM IT Labs</p></Grid>
+                    <Grid item xs={4}><p className="clockText ">{clock}</p></Grid>
+                    <Grid item xs={4} container
                     alignItems="center"
                     justifyContent="flex-end"
                     style={{paddingRight:15}}>
