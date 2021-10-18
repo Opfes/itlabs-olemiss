@@ -24,15 +24,17 @@ function DigitalSignageSchedule() {
   useEffect(() => {
     getSchedule();
 
+    //interval handles how long to count until the refresh occurs
     const interval = setInterval(() =>{
       let today = new Date();
       let hours;
       
-      //this next section formats the clock
+      //this next section formats the hours in clock
       if (today.getHours() > 12){
         hours = today.getHours() - 12;
-      } else {hours = today.getHours;}
+      } else {hours = today.getHours();}
 
+      //this section makes it so zeros in the clock are handled appropriate
       if(today.getMinutes() === 0){
         setClock(hours + ':' + "00");
       } else if (today.getMinutes() < 10) {
